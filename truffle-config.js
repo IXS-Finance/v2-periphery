@@ -5,8 +5,40 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 function provider(network) {
     if (network == "polygon"){
         return new HDWalletProvider({
-            privateKeys: [fs.readFileSync(path.resolve(__dirname, '../.pk')).toString().trim()],
-            providerOrUrl: "https://polygon-mainnet.g.alchemy.com/v2/3EdUIIYgKuUEY2Kh6k7u4b6nRJ7Yufa_"
+            privateKeys: [fs.readFileSync(path.resolve(__dirname, './keystores/polygon.pk')).toString().trim()],
+            providerOrUrl: "https://polygon-mainnet.g.alchemy.com/v2/I_jm3zNKwAzFEwN9DT15-sAhZc5z3I0M"
+        }); 
+    }
+
+    if (network == "mumbai"){
+        return new HDWalletProvider({
+            // make sure you create a folder keystores, create a file mumbai.pk and put your private key there
+            privateKeys: [fs.readFileSync(path.resolve(__dirname, './keystores/mumbai.pk')).toString().trim()],
+            providerOrUrl: "https://polygon-mumbai.blockpi.network/v1/rpc/public"
+        }); 
+    }
+
+    if (network == "amoy"){
+        return new HDWalletProvider({
+            // make sure you create a folder keystores, create a file mumbai.pk and put your private key there
+            privateKeys: [fs.readFileSync(path.resolve(__dirname, './keystores/amoy.pk')).toString().trim()],
+            providerOrUrl: "https://rpc-amoy.polygon.technology/"
+        }); 
+    }
+
+    if (network == "baseSepolia"){
+        return new HDWalletProvider({
+            // make sure you create a folder keystores, create a file mumbai.pk and put your private key there
+            privateKeys: [fs.readFileSync(path.resolve(__dirname, './keystores/baseSepolia.pk')).toString().trim()],
+            providerOrUrl: "https://sepolia.base.org"
+        }); 
+    }
+
+    if (network == "base"){
+        return new HDWalletProvider({
+            // make sure you create a folder keystores, create a file mumbai.pk and put your private key there
+            privateKeys: [fs.readFileSync(path.resolve(__dirname, './keystores/base.pk')).toString().trim()],
+            providerOrUrl: "https://base-mainnet.g.alchemy.com/v2/I_jm3zNKwAzFEwN9DT15-sAhZc5z3I0M"
         }); 
     }
 
@@ -53,11 +85,47 @@ module.exports = {
         polygon: {
             provider: () => provider('polygon'),
             network_id: 137,
+            networkCheckTimeout: 100000000,
+            confirmations: 2,
+            timeoutBlocks: 5,
+            skipDryRun: true,
+            gasPrice: 46000000000, // 40 gwei (current cost in eth station)
+        },
+        mumbai: {
+            provider: () => provider('mumbai'),
+            network_id: 80001,
             networkCheckTimeout: 10000000,
             confirmations: 2,
             timeoutBlocks: 200,
-            //skipDryRun: true,
-            gasPrice: 46000000000, // 100 gwei (current cost in eth station)
+            skipDryRun: true,
+            gasPrice: 3000000000, // 3 gwei (current cost in eth station)
+        },
+        amoy: {
+            provider: () => provider('amoy'),
+            network_id: 80002,
+            networkCheckTimeout: 10000000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
+            gasPrice: 3000000000, // 3 gwei (current cost in eth station)
+        },
+        baseSepolia: {
+            provider: () => provider('baseSepolia'),
+            network_id: 84532,
+            networkCheckTimeout: 40000000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
+            // gasPrice: 3000000000, // 3 gwei (current cost in eth station)
+        },
+        base: {
+            provider: () => provider('base'),
+            network_id: 8453,
+            networkCheckTimeout: 40000000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
+            // gasPrice: 3000000000, // 3 gwei (current cost in eth station)
         },
     },
 

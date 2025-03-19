@@ -84,7 +84,7 @@ module.exports = async function(deployer, network, accounts) {
 
     const RECEIVER = deployer.networks[network].from;
     const DEADLINE = '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
-    const TEST_ETH = '10000000000000000'; // 0.01 ETH
+    const TEST_ETH = '1000000000000000'; // 0.001 ETH
     const TEST_SUPPLY = '100000000000000000000'; // 100 TT
 
     // trick to be compatible with waffle build
