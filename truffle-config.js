@@ -173,11 +173,11 @@ module.exports = {
     RedBellyTestnet: {
       provider: () => provider('RedBellyTestnet'),
       network_id: 153
-      //   networkCheckTimeout: 40000000,
-      //   confirmations: 2,
-      //   timeoutBlocks: 200,
-      //   skipDryRun: true
-      // gasPrice: 3000000000, // 3 gwei (current cost in eth station)
+      // networkCheckTimeout: 40000000,
+      // confirmations: 2,
+      // timeoutBlocks: 200,
+      // //   skipDryRun: true
+      // gasPrice: 250000000000000 // 3 gwei (current cost in eth station)
     }
   },
 
@@ -186,11 +186,11 @@ module.exports = {
     solc: {
       version: '0.6.6',
       settings: {
-        evmVersion: 'istanbul'
-        // optimizer: {
-        //   enabled: true,
-        //   runs: 999999
-        // }
+        evmVersion: 'istanbul',
+        optimizer: {
+          enabled: true,
+          runs: 200
+        }
       }
     }
   }
