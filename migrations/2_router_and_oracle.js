@@ -105,7 +105,10 @@ module.exports = async function(deployer, network, accounts) {
     const erc20 = await ERC20.deployed()
 
     console.info('> erc20->approve [ROUTER]')
-    await erc20.approve(liquidityRouter.address, TEST_SUPPLY)
+    const tx = await erc20.approve(liquidityRouter.address, TEST_SUPPLY)
+
+    const receipt = await tx
+    console.log('receipt', receipt)
 
     console.info('> liquidityRouter->addLiquidityETH [TT<>WETH9]')
     console.info('Add liquidity to:', liquidityRouter.address)
