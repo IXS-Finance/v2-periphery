@@ -3,3 +3,5 @@ node_modules/
 .rush/
 *.build.log
 *.error.log
+contracts/artifacts/
+keystores/
