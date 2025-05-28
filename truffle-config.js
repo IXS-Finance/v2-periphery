@@ -79,6 +79,18 @@ function provider(network) {
     })
   }
 
+  if (network == 'RedBellyMainnet') {
+    return new HDWalletProvider({
+      privateKeys: [
+        fs
+          .readFileSync(path.resolve(__dirname, './keystores/redBellyMainnet.pk'))
+          .toString()
+          .trim()
+      ],
+      providerOrUrl: 'https://governors.mainnet.redbelly.network'
+    })
+  }
+
   if (network !== 'kovan' && network !== 'mainnet') {
     throw new Error('Allowed network are kovan and mainnet')
   } else if (!fs.existsSync(path.resolve(__dirname, '../.pk'))) {

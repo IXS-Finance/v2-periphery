@@ -74,6 +74,11 @@ module.exports = {
   RedBellyTestnet: {
     FACTORY_ADDRESS: '0xFe4ed79689cB4aDF76A419C1f027A7671c37c179',
     TEST: true, // test LP creation
-    WETH_ADDRESS: '0xC8fce9E9F0a999Def5cbc041AcC64750C3F92Cd8' // RBNT
+    WETH_ADDRESS: '0x4110775464e976A23F8A1Cc351219d7C40D27396' // wRBNT
+  },
+  RedBellyMainnet: {
+    FACTORY_ADDRESS: '',
+    TEST: true, // test LP creation
+    WETH_ADDRESS: '0x6ed1F491e2d31536D6561f6bdB2AdC8F092a6076' // wRBNT
   }
 }
