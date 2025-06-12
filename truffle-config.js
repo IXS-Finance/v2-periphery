@@ -79,7 +79,7 @@ function provider(network) {
     })
   }
 
-  if (network == 'RedBellyMainnet') {
+  if (network == 'redBellyMainnet') {
     return new HDWalletProvider({
       privateKeys: [
         fs
@@ -91,11 +91,11 @@ function provider(network) {
     })
   }
 
-  if (network !== 'kovan' && network !== 'mainnet') {
-    throw new Error('Allowed network are kovan and mainnet')
-  } else if (!fs.existsSync(path.resolve(__dirname, '../.pk'))) {
-    throw new Error('Private key file ".pk" does not exist in monorepo root')
-  }
+  // if (network !== 'kovan' && network !== 'mainnet') {
+  //   throw new Error('Allowed network are kovan and mainnet')
+  // } else if (!fs.existsSync(path.resolve(__dirname, '../.pk'))) {
+  //   throw new Error('Private key file ".pk" does not exist in monorepo root')
+  // }
   return new HDWalletProvider({
     privateKeys: [
       fs
@@ -190,6 +190,11 @@ module.exports = {
       // timeoutBlocks: 200,
       // //   skipDryRun: true
       // gasPrice: 250000000000000 // 3 gwei (current cost in eth station)
+    },
+    redBellyMainnet: {
+      provider: () => provider('redBellyMainnet'),
+      chain_id: 151,
+      network_id: 151
     }
   },
 
